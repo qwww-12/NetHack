@@ -1,5 +1,9 @@
 #include "libs.h"
 
 int main(){
-	printf("========== hello in nethack ===============\n");
+	SCREEN *scr = newterm(NULL, stdout, stdin);
+	printw("nah");
+	refresh();
+	getch();
+	endwin();
 }

@@ -1,5 +1,5 @@
 GCC = gcc
-CFLAGS = -Wall -Werror -Wextra -lncurses
+CFLAGS = -lncurses
 SRC =	main.c
 HDR = 	lib.h
 OBJ = $(SRC:.c=.o)
@@ -14,3 +14,4 @@ clean:
 	rm -f $(OBJ)
 fclean: clean
 	rm -f $(NAME)
+re: fclean all
