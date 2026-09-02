@@ -1,8 +1,10 @@
 #include "libs.h"
 
+char _buffer[BUFFER_SIZE];
+
 void buf_copy(char *name, char *buffer) {
-	int i = 0;
-	while (i < strlen(buffer) && buffer[i] != '\n') {
+	size_t i = 0;
+	while (i < strlen(buffer) - 1 && buffer[i] != '\n') {
 		name[i] = buffer[i];
 		i++;
 	}
@@ -24,7 +26,7 @@ void first_info_handling(Player *player) {
 	memset(_buffer, 0, strlen(_buffer));
 	write(STDOUT_FILENO, REQ_GEN, strlen(REQ_GEN));
 	while (true) {
-		read(STDOUT_FILENO, _buffer, BUFFER_SIZE);
+		read(STDIN_FILENO, _buffer, BUFFER_SIZE);
 		if (strlen(_buffer) - 1 != 1 || (_buffer[0] != 'M' && _buffer[0] != 'F')) {
 			memset(_buffer, 0, strlen(_buffer));
 			write(STDERR_FILENO, BAD_GEN, strlen(BAD_GEN));
@@ -39,7 +41,9 @@ void first_info_handling(Player *player) {
 int main(){
 	Player *player = (Player *)malloc(sizeof(Player));
 	first_info_handling(player);
-	printf("name: %s\n", player->name);
-	printf("gender: %c\n", player->gender);
+	initscr();
+	refresh();
+	WindowInfo(player);
+	endwin();
 	free(player);
 }
