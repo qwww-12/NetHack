@@ -4,7 +4,10 @@ CFLAGS =  -lncurses
 
 SRC =	main.c			\
 	initStructPlayer.c	\
-	WindowPlayerInfo.c	
+	initScreen.c		\
+	startScreen.c		\
+	WindowPlayerInfo.c	\
+	structureFree.c
 
 HDR = 	lib.h		\
 	declarations.h	
