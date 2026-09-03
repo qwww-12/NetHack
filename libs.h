@@ -17,6 +17,7 @@ typedef struct Player Player;
 
 struct Player {
 	char name[MAX_NAME_SIZE];
+	char *gender;
 	char *naturale;
 	char *pet;
 //	_role *role;

@@ -3,6 +3,7 @@ GCC = gcc
 CFLAGS =  -lncurses
 
 SRC =	main.c			\
+	initStructPlayer.c	\
 	WindowPlayerInfo.c	
 
 HDR = 	lib.h		\

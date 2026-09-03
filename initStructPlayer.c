@@ -1,6 +1,6 @@
 #include "libs.h"
 
-void buf_copy(char *name, char *buffer) {
+static void buf_copy(char *name, char *buffer) {
 	size_t i = 0;
 	while (i < strlen(buffer) - 1 && buffer[i] != '\n') {
 		name[i] = buffer[i];
@@ -9,7 +9,7 @@ void buf_copy(char *name, char *buffer) {
 	name[i] = '\0';
 }
 
-void first_info_handling(Player *player) {
+void nameInput(char *name) {
 	char _buffer[BUFFER_SIZE];
 
 	write(STDOUT_FILENO, REQ_NAME, strlen(REQ_NAME));
@@ -20,16 +20,19 @@ void first_info_handling(Player *player) {
 			write(STDERR_FILENO, BAD_NAME, strlen(BAD_NAME));
 			continue;
 		}
-		buf_copy(player->name, _buffer);
+		buf_copy(name, _buffer);
 		break;
 	}
 }
 
-int main(){
-	Player *player = initPlayer();
-	nameInput(player->name);
-	initscr();
-	WindowInfo(player);
-	endwin();
-	free(player);
+Player *initPlayer() {
+	Player *player = (Player *)malloc(sizeof(Player));
+	if (!player){
+		printf("Dynamic allocation error of player struct\n");
+		exit(1);
+	}
+	player->gender = NULL;
+	player->pet = NULL;
+	player->naturale = NULL;
+	return player;	
 }
