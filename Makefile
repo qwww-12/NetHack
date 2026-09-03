@@ -1,6 +1,6 @@
 GCC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -lncurses
+CFLAGS =  -lncurses
 
 SRC =	main.c			\
 	WindowPlayerInfo.c	

@@ -42,7 +42,6 @@ int main(){
 	Player *player = (Player *)malloc(sizeof(Player));
 	first_info_handling(player);
 	initscr();
-	refresh();
 	WindowInfo(player);
 	endwin();
 	free(player);
