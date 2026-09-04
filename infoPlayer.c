@@ -20,5 +20,21 @@ void takeNewName(Player *player) {
 	noecho();
 }
 
-void PrintDataStructure(Player *player) {
+void PrintDataStructure(Player *player, WINDOW *win) {
+	wprintw(win, "name: %s\n", player->name);
+	if (!player->gender)
+		wprintw(win, "gender: not specified\n");
+	else
+		wprintw(win, "gender: %s\n", player->gender);
+
+	if (!player->role)
+		wprintw(win, "role: not specified\n");
+	else
+		wprintw(win, "role: ");
+
+	if (!player->pet)
+	else
+	
+	if (!player->naturale)
+	else
 }
