@@ -1,33 +1,40 @@
-GCC = gcc
+CC := gcc
 
-CFLAGS =  -lncurses
+#CFLAGS := -Wall -Werror -Wextra
 
-SRC =	main.c			\
+LIBS = -lncurses
+
+SRC :=	main.c			\
 	initStructPlayer.c	\
 	initScreen.c		\
 	startScreen.c		\
 	WindowPlayerInfo.c	\
 	structureFree.c
 
-HDR = 	lib.h		\
+HDR := 	libs.h		\
 	declarations.h	
 
-OBJ = $(SRC:.c=.o)
+OBJ := $(SRC:.c=.o)
 
-NAME = nethack
+RUN = clear && ./$(TARGET)
 
-all: $(NAME)
+TARGET := nethack
 
-$(NAME): $(OBJ)
-	$(GCC) $(CFLAGS) $^ -o $@
+run: all
+	$(RUN)
+
+all: $(TARGET)
+
+$(TARGET): $(OBJ)
+	$(CC) $(LIBS) $^ -o $@
 
 %.o: %.c $(HDR)
-	$(GCC) $(CFLAGS) $< -o $@
+	$(CC) $(LIBS) -c $< -o $@
 
 clean:
 	rm -f $(OBJ)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(TARGET)
 
 re: fclean all
