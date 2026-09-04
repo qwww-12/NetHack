@@ -13,6 +13,7 @@ typedef struct Player Player;
 #include <stdlib.h>
 #include <ncurses.h>
 #include <string.h>
+#include <ctype.h>
 #include "declarations.h"
 
 extern int maxY;

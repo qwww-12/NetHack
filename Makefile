@@ -2,12 +2,13 @@ CC := gcc
 
 #CFLAGS := -Wall -Werror -Wextra
 
-LIBS = -lncurses
+LIBS := -lncurses
 
 SRC :=	main.c			\
 	initStructPlayer.c	\
 	initScreen.c		\
 	startScreen.c		\
+	infoPlayer.c	\
 	WindowPlayerInfo.c	\
 	structureFree.c
 
@@ -20,7 +21,7 @@ RUN = clear && ./$(TARGET)
 
 TARGET := nethack
 
-run: all
+run: all clean
 	$(RUN)
 
 all: $(TARGET)
