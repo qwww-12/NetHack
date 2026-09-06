@@ -1,8 +1,11 @@
 #include "libs.h"
 
-static void welcomeOutput(Player *player) {
-	printw("Name: %s\n", player->name);
-	printw("Press (y) for pick your role, naturale and pet\n");
+static void welcomeOutput(char *name) {
+	printw("Name: %s\n", name);
+	printw("Press (r) for pick your role\n");
+	printw("Press (p) for pick your pet\n");
+	printw("Press (g) for pick your gender\n");
+	printw("Press (n) for pick your naturale\n");
 	printw("Press (q) for exit\n");
 	mvprintw(maxY - 1, maxX - 32, "Press (p) for change your name");
 	refresh();
@@ -10,15 +13,17 @@ static void welcomeOutput(Player *player) {
 
 void startScreen(Player *player) {
 	initScreen();
+	welcomeOutput(player->name);
 	while (1) {
-		welcomeOutput(player);
 		char ch = getch();
 		if (ch == 'p') {
-			clear();
-			takeNewName(player);
-			clear();
+			takeNewName(player->name);
+			welcomeOutput(player->name);
 		}
-		else if (ch == 'y'){}
+		else if (ch == 'r'){
+			clear();
+			WindowInfo(player, ch);
+		}
 		else if (ch == 'q')
 			break;
 	}

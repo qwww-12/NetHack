@@ -8,7 +8,8 @@ SRC :=	main.c			\
 	initStructPlayer.c	\
 	initScreen.c		\
 	startScreen.c		\
-	infoPlayer.c	\
+	infoPlayer.c		\
+	WindowOfChosing.c	\
 	WindowPlayerInfo.c	\
 	structureFree.c
 

@@ -1,19 +1,15 @@
 #include "declarations.h"
 
-void WindowInfo(Player *player) {
-	int maxY, maxX;
-	getmaxyx(stdscr, maxY, maxX);
-	refresh();
-	(void)maxX;
-	WINDOW *info_part = newwin(5, 20, maxY-maxY, maxX-maxX);
-	if (!info_part) {
+void WindowInfo(Player *player, char c) { //naturale: not specified
+	WINDOW *pwin= newwin(7, 27, 0, 0);
+	if (!pwin) {
 		free(player);
 		exit (1);
 	}
 	refresh();
-	box(info_part, 0, 0);
-	mvwprintw(info_part, 1, 1, "  name: %s", player->name);
-	wrefresh(info_part);
+	box(pwin, 0, 0);
+	wrefresh(pwin);
+	PrintDataStructure(player, pwin, c);
 	getch();
-	delwin(info_part);
+	delwin(pwin);
 }
