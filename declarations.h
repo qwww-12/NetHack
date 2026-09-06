@@ -7,6 +7,7 @@ Player *initPlayer();
 void nameInput(char *name);
 void startScreen(Player *player);
 void initScreen();
+void inputWindow(Player *player, char c);
 void takeNewName(char *name);
 void PrintDataStructure(Player *player, WINDOW *win, char c);
 void WindowInfo(Player *player, char c);

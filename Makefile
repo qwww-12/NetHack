@@ -9,8 +9,9 @@ SRC :=	main.c			\
 	initScreen.c		\
 	startScreen.c		\
 	infoPlayer.c		\
-	WindowOfChosing.c	\
+	controllerOptions.c	\
 	WindowPlayerInfo.c	\
+	windowGender.c		\
 	structureFree.c
 
 HDR := 	libs.h		\

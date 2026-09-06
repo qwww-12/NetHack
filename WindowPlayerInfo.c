@@ -1,6 +1,6 @@
 #include "declarations.h"
 
-void WindowInfo(Player *player, char c) { //naturale: not specified
+void WindowInfo(Player *player, char c) {
 	WINDOW *pwin= newwin(7, 27, 0, 0);
 	if (!pwin) {
 		free(player);
