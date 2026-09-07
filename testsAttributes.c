@@ -1,6 +1,13 @@
 #include <ncurses.h>
 
 int main(){
+	//attrset();
+	//attron();
+	//attroff();
+	//standend();
+	//chgat();
+	//mvchgat();
+	//init_pair();
 	initscr();
 	addch('A' | A_STANDOUT);
 	addch('\n');
