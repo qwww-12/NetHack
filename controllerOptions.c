@@ -1,14 +1,20 @@
 #include "libs.h"
 
-void inputWindow(Player *player, char c) {
-	char ch;
+void manipulateOptWindow(Player *player, char inputC) {
+	char ret = inputC;
 
-	WindowInfo(player, c);
 	while (1) {
-		if (c == 'g') {
-			ch = genderWindow(player);
-			WindowInfo(player, ch);
-			break;
+		if (ret != 0) {
+			if (ret == 'q')
+				break;
+			WindowInfo(player, ret);
+			ret = 0;
+		}
+		if (inputC == 'g')
+			ret = genderWindow(player->gender);
+		if (inputC == 'p') {
+			ret = petWindow(&player->pet);
+			mvprintw(LINES - 1, 1, "ret = %c", ret);
 		}
 	}
 }

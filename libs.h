@@ -16,9 +16,6 @@ typedef struct Player Player;
 #include <ctype.h>
 #include "declarations.h"
 
-extern int maxY;
-extern int maxX;
-
 struct Player {
 	char name[MAX_NAME_SIZE];
 	char *gender;

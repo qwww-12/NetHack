@@ -12,6 +12,7 @@ SRC :=	main.c			\
 	controllerOptions.c	\
 	WindowPlayerInfo.c	\
 	windowGender.c		\
+	windowPet.c		\
 	structureFree.c
 
 HDR := 	libs.h		\

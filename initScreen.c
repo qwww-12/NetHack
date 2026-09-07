@@ -5,5 +5,4 @@ void initScreen() {
 	raw();
 	noecho();
 	keypad(stdscr, TRUE);
-	getmaxyx(stdscr, maxY, maxX);
 }

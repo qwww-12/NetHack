@@ -1,7 +1,5 @@
 #include "libs.h"
 
-int maxY, maxX;
-
 int main(){
 	Player *player = initPlayer();
 	nameInput(player->name);

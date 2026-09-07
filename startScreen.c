@@ -7,28 +7,31 @@ static void welcomeOutput(char *name) {
 	printw("Press (g) for pick your gender\n");
 	printw("Press (n) for pick your naturale\n");
 	printw("Press (q) for exit\n");
-	mvprintw(maxY - 1, maxX - 21, "Press (i) for rename\n");
+	mvprintw(LINES - 1, COLS - 21, "Press (i) for rename\n");
 	refresh();
 }
 
-static bool is_rpgn(char c) {
-	return (c == 'r' || c == 'p' || c == 'g' || c == 'n');
+static bool is_rpgnq(char c) {
+	return (c == 'r' || c == 'p' || c == 'g' || c == 'n' || c == 'q');
 }
 
 void startScreen(Player *player) {
+	char ch;
+
 	initScreen();
 	welcomeOutput(player->name);
 	while (1) {
-		char ch = getch();
+		ch = getch();
 		if (ch == 'i') {
 			takeNewName(player->name);
 			welcomeOutput(player->name);
 		}
-		else if (is_rpgn(ch) == true){
+		else if (is_rpgnq(ch) == true){
 			clear();
-			inputWindow(player, ch);
+			break;
 		}
 		else if (ch == 'q')
-			break;
+			return;
 	}
+	manipulateOptWindow(player, ch);
 }
