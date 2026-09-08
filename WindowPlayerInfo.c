@@ -7,8 +7,8 @@ void WindowInfo(Player *player, char c) {
 		exit (1);
 	}
 	refresh();
-	start_color();
 	init_pair(1, COLOR_YELLOW, COLOR_BLACK);
+	init_color(COLOR_YELLOW, 999, 999, 0);
 	wattron(pwin, COLOR_PAIR(1));
 	box(pwin, 0, 0);
 	wrefresh(pwin);

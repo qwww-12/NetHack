@@ -14,17 +14,11 @@ char genderWindow(char **gender) {
 	char c, inputC = wgetch(win);
 	switch (inputC) {
 		case 'm':
-			if (*gender != NULL && *gender[0] == 'f')
-				free(*gender);
-			if (*gender == NULL)
-				*gender = strdup("male");
+			allocerOpts(gender, "male");
 			c = 'n';
 			break;
 		case 'f':
-			if (*gender != NULL && *gender[0] == 'm')
-				free(*gender);
-			if (*gender == NULL)
-				*gender = strdup("female");
+			allocerOpts(gender, "female");
 			c = 'n';
 			break;
 		case '[':

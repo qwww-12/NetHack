@@ -4,5 +4,6 @@ void initScreen() {
 	initscr();
 	raw();
 	noecho();
-	keypad(stdscr, TRUE);
+	start_color();
+	// keypad(stdscr, TRUE);
 }
