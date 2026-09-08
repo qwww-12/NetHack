@@ -1,6 +1,6 @@
 #include "libs.h"
 
-char genderWindow(char *gender) {
+char genderWindow(char **gender) {
 	WINDOW *win = newwin(13, 25, 0, 35);
 	mvwprintw(win, 1, 1, "Pick a gender");
 	mvwprintw(win, 4, 1, "m - male");
@@ -11,20 +11,21 @@ char genderWindow(char *gender) {
 	mvwprintw(win, 11, 1, "q - quit");
 	wrefresh(win);
 	
-	char inputC = wgetch(win);
-	char c = 0;
+	char c, inputC = wgetch(win);
 	switch (inputC) {
 		case 'm':
-			if (gender != NULL && gender[0] == 'f')
-				free(gender);
-			if (gender == NULL)
-				gender = strdup("male");
+			if (*gender != NULL && *gender[0] == 'f')
+				free(*gender);
+			if (*gender == NULL)
+				*gender = strdup("male");
+			c = 'n';
 			break;
 		case 'f':
-			if (gender != NULL && gender[0] == 'm')
-				free(gender);
-			if (gender == NULL)
-				gender = strdup("female");
+			if (*gender != NULL && *gender[0] == 'm')
+				free(*gender);
+			if (*gender == NULL)
+				*gender = strdup("female");
+			c = 'n';
 			break;
 		case '[':
 			c = 'r';
@@ -39,8 +40,8 @@ char genderWindow(char *gender) {
 			c = 'q';
 			break;
 	}
-	if (c != 0)
-		clear();
+	wclear(win);
+	wrefresh(win);
 	delwin(win);
 	return c;
 }
