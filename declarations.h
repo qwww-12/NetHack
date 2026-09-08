@@ -12,7 +12,7 @@ void takeNewName(char *name);
 void PrintDataStructure(Player *player, WINDOW *win, char c);
 void WindowInfo(Player *player, char c);
 void freePlayer(Player **player);
-char genderWindow(char **gender);
+char genderWindow(Player **gender);
 char petWindow(Player **player);
 char naturaleWindow(Player **player);
 void allocerOpts(char **src, const char *s);

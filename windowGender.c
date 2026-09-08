@@ -1,6 +1,10 @@
 #include "libs.h"
 
-char genderWindow(char **gender) {
+static bool validOptions(char c) {
+	return (c == 'm' || c == 'f' || c == '[' || c == ';' || c == '=' || c == 'q');
+}
+
+char genderWindow(Player **player) {
 	WINDOW *win = newwin(13, 25, 0, 35);
 	mvwprintw(win, 1, 1, "Pick a gender");
 	mvwprintw(win, 4, 1, "m - male");
@@ -11,31 +15,36 @@ char genderWindow(char **gender) {
 	mvwprintw(win, 11, 1, "q - quit");
 	wrefresh(win);
 	
-	char c, inputC = wgetch(win);
+	char inputC;
+	while (1) {
+		inputC = wgetch(win);
+		if (validOptions(inputC) == true)
+			break;
+	}
 	switch (inputC) {
 		case 'm':
-			allocerOpts(gender, "male");
-			c = 'n';
+			allocerOpts(&(*player)->gender, "male");
+			inputC = findNextStat(*player, 'g');
 			break;
 		case 'f':
-			allocerOpts(gender, "female");
-			c = 'n';
+			allocerOpts(&(*player)->gender, "female");
+			inputC = findNextStat(*player, 'g');
 			break;
 		case '[':
-			c = 'r';
+			inputC = 'r';
 			break;
 		case ';':
-			c = 'p';
+			inputC = 'p';
 			break;
 		case '=':
-			c = 'n';
+			inputC = 'n';
 			break;
 		case 'q':
-			c = 'q';
+			inputC = 'q';
 			break;
 	}
 	wclear(win);
 	wrefresh(win);
 	delwin(win);
-	return c;
+	return inputC;
 }
