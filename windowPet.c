@@ -31,6 +31,7 @@ char petWindow(char **pet) {
 			}
 			if (*pet == NULL)
 				*pet = strdup("cat");
+			c = 'g';
 			break;
 		case 'f':
 			if (*pet != NULL && *pet[0] != 'f') {
@@ -39,6 +40,7 @@ char petWindow(char **pet) {
 			}
 			if (*pet == NULL)
 				*pet = strdup("fog");
+			c = 'g';
 			break;
 		case 'o':
 			if (*pet != NULL && *pet[0] != 'o') {
@@ -47,6 +49,7 @@ char petWindow(char **pet) {
 			}
 			if (*pet == NULL)
 				*pet = strdup("owl");
+			c = 'g';
 			break;
 		case '[':
 			c = 'r';
@@ -61,6 +64,7 @@ char petWindow(char **pet) {
 			c = 'q';
 			break;
 	}
+	wclear(win);
 	delwin(win);
 	return c;
 }
