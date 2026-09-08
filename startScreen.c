@@ -30,8 +30,6 @@ void startScreen(Player *player) {
 			clear();
 			break;
 		}
-		else if (ch == 'q')
-			return;
 	}
 	manipulateOptWindow(player, ch);
 }
