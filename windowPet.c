@@ -4,8 +4,8 @@ static bool validOptions(char c) {
 	return (c == 'c' || c == 'f' || c == 'o' || c == '[' || c == ';' || c == '=' || c == 'q');
 }
 
-char petWindow(char **pet) {
-	WINDOW *win = newwin(14, 25, 0, 35);
+char petWindow(Player **player) {
+	WINDOW *win = newwin(16, 26, 0, 35);
 	refresh();
 	mvwprintw(win, 1, 1, "Pick a pet");
 	mvwprintw(win, 4, 1, "c - cat");
@@ -15,9 +15,13 @@ char petWindow(char **pet) {
 	mvwprintw(win, 10, 1, "; - pick gender first");
 	mvwprintw(win, 11, 1, "= - pick naturale first");
 	mvwprintw(win, 12, 1, "q - quit");
+	init_pair(2, COLOR_BLUE, COLOR_BLACK);
+	init_color(COLOR_BLUE, 0, 0, 999); 
+	wattron(win, COLOR_PAIR(2));
 	box(win, 0, 0);
 	wrefresh(win);
-	char c = 0, inputC;
+	wattroff(win, COLOR_PAIR(2));
+	char inputC;
 	while (1) {
 		inputC = wgetch(win);
 		if (validOptions(inputC) == true)
@@ -25,46 +29,32 @@ char petWindow(char **pet) {
 	}
 	switch (inputC) {
 		case 'c':
-			if (*pet != NULL && *pet[0] != 'c') {
-				free(*pet);
-				*pet = NULL;
-			}
-			if (*pet == NULL)
-				*pet = strdup("cat");
-			c = 'g';
+			allocerOpts(&(*player)->pet, "cat");
+			inputC = findNextStat(*player, 'p');
 			break;
 		case 'f':
-			if (*pet != NULL && *pet[0] != 'f') {
-				free(*pet);
-				*pet = NULL;		
-			}
-			if (*pet == NULL)
-				*pet = strdup("fog");
-			c = 'g';
+			allocerOpts(&(*player)->pet, "fog");
+			inputC = findNextStat(*player, 'p');
 			break;
 		case 'o':
-			if (*pet != NULL && *pet[0] != 'o') {
-				free(*pet);
-				*pet = NULL;
-			}
-			if (*pet == NULL)
-				*pet = strdup("owl");
-			c = 'g';
+			allocerOpts(&(*player)->pet, "owl");
+			inputC = findNextStat(*player, 'p');
 			break;
 		case '[':
-			c = 'r';
+			inputC = 'r';
 			break;
 		case ';':
-			c = 'g';
+			inputC = 'g';
 			break;
 		case '=':
-			c = 'n';
+			inputC = 'n';
 			break;
 		case 'q':
-			c = 'q';
+			inputC = 'q';
 			break;
 	}
 	wclear(win);
+	wrefresh(win);
 	delwin(win);
-	return c;
+	return inputC;
 }
