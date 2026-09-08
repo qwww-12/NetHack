@@ -13,6 +13,8 @@ SRC :=	main.c			\
 	WindowPlayerInfo.c	\
 	windowGender.c		\
 	windowPet.c		\
+	windowNaturale.c	\
+	helperOfOpts.c		\
 	structureFree.c
 
 HDR := 	libs.h		\
